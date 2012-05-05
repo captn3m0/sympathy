@@ -1,0 +1,25 @@
+#SYMPATHY EDITOR
+
+Sympathy is an in-browser text editor for Chrome, which allows you to edit _local files_. This is as of now, 
+only a proof of concept editor, and is not completely functional.
+
+#Why?
+Because the future is the browser? And more so because I wanted a local editor in my browser to complement
+a terminal. Other than these three things, what more would you need? You can read the related blog post at my blog
+which gave birth to this editor. I was initially hoping for a chromium fork, but @nanu\_clickity told me about 
+NPAPI plugins, which led to this experiment.
+
+#How?
+Sympathy does not use the HTML5 filesystem API. It instead relies on a NPAPI plugin called [npapi-file-io](npapi-file-io.googlecode.com). 
+The plugin acts as a relay between the frontend and the filesystem, allowing you to save and read files, directories.
+
+#What's Next?
+I'm gonna try to fork [sourcekit](https://github.com/kenotron/sourcekit/) to use this instead, but I feel that it would
+restrict the power of multiple tabs that the current format allows (1 file = 1 tab). So editor tabs are not virtual
+tabs but at par with a normal browser tab
+
+#Compatability
+It only works with Linux as of now. Windows support should be coming soon, but due to lac of npapi-file-io bindings
+for mac, it won't work there.
+
+Editor Icon by [Asher](http://kyo-tux.deviantart.com/) used under [CC BY-NC-SA 3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/)

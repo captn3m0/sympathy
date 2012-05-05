@@ -1,0 +1,12 @@
+.CodeMirror-scroll{
+	height:100%;
+	width:100%;
+}
+#editor{
+  width:70%;
+  float:left;
+}
+#browser{
+	padding-left:20px;
+  	float:right;
+}
