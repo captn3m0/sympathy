@@ -1,5 +1,7 @@
 var Sympathy = {
+  currentTheme:"neat",
   init: function () {
+
     /** Initialize NPAPI Plugin */
     this.fs = document.createElement("embed");
     this.fs.style.position = "absolute";
@@ -12,6 +14,7 @@ var Sympathy = {
     _.extend(CodeMirror, {
       modeURL: "cm/mode/%N/%N.js"
     });
+    /** Additional Commands **/
     _.extend(CodeMirror.commands, {
       save: function (cm) {
         Sympathy.save(cm.getValue());
@@ -19,11 +22,22 @@ var Sympathy = {
       reload: Sympathy.reload,
       autocomplete: function (cm) {
         CodeMirror.simpleHint(cm, CodeMirror.javascriptHint);
+      },
+      cycleTheme:function(cm){
+        //look for the currentTheme
+        var index = Sympathy.themes.indexOf(Sympathy.currentTheme);
+        console.log(index);
+        var next = (index==Sympathy.themes.length-1) ? 0 : index+1;
+        console.log(next);
+        var themeName = Sympathy.themes[next]
+        Sympathy.changeTheme(themeName);
       }
     });
+
+    /** Initialize CodeMirror */
     this.cm = CodeMirror(document.getElementById('editor'), {
       lineNumbers: true,
-      theme: "eclipse",
+      theme: this.currentTheme,
       onCursorActivity: function () {
         Sympathy.cm.matchHighlight("CodeMirror-matchhighlight");
       },
@@ -31,11 +45,14 @@ var Sympathy = {
         "Ctrl-Space": "autocomplete",
         "Ctrl-H":"replace",
         "Ctrl-L":'goto',
-        "Ctrl-R":"reload"
+        "Ctrl-R":"reload",
+        "Ctrl-J":'goto',
+        "F9":"cycleTheme"
       },
       autoClearEmptyLines: true,
       autofocus:true
     });
+    this.changeTheme(this.currentTheme);
     /**
      * Now we look for a hash in the url
      */
@@ -117,6 +134,7 @@ var Sympathy = {
 	document.getElementById('theme-style').setAttribute('href',"cm/theme/"+theme+".css");
     this.cm.setOption("theme", theme);
     document.body.setAttribute('class','cm-s-'+theme);
+    Sympathy.currentTheme = theme;
   },
   reload:function(cm){
     //wish there was a function to check last modified time in npapi
