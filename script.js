@@ -19,6 +19,17 @@ var Sympathy = {
       save: function () {
         Sympathy.save(Sympathy.cm.getValue());
       },
+      open: function(cm){
+        var rootDir = (typeof Sympathy.dir !== 'undefined') ? "Relative to "+ Sympathy.dir : 'Type Absolute Path';
+      var queryDialog =
+    'Filename: <input type="text" style="width: 10em"> <span style="color: #888">('+rootDir+')</span>';
+        cm.openDialog(queryDialog,function(filename){
+          if(Sympathy.dir)
+            filename = Sympathy.dir + Sympathy.pathSeparator + filename;
+          Sympathy.loadFile(filename);
+        });
+        return false;
+      },
       reload: Sympathy.reload,
       autocomplete: function (cm) {
         CodeMirror.simpleHint(cm, CodeMirror.javascriptHint);
@@ -49,11 +60,27 @@ var Sympathy = {
           cm.setLine(line,lineContents);
         }
       },
-      newtab: function(){
+      newtab: function(cm,file){
         //create a new tab with the current folder browse mode
-        var link = location.origin+location.pathname+'#'+Sympathy.dir;
+        if(typeof file !='undefined')
+          var link = location.origin+location.pathname+'#'+file;
+		else
+          var link = location.origin+location.pathname+'#'+Sympathy.dir;
         window.open(link);
 		return false;
+      },
+      opennewtab: function(cm){
+        console.log('nto');
+		//ask for file name
+		var rootDir = (typeof Sympathy.dir !== 'undefined') ? "Relative to "+ Sympathy.dir : 'Type Absolute Path';
+		var queryDialog =
+    'Filename: <input type="text" style="width: 10em"> <span style="color: #888">('+rootDir+') - Will open in new tab</span>';
+        cm.openDialog(queryDialog,function(filename){
+          if(Sympathy.dir)
+            filename = Sympathy.dir + Sympathy.pathSeparator + filename;
+          CodeMirror.commands.newtab(cm,filename)
+        });
+        return false;
       }
     });
 
@@ -72,7 +99,9 @@ var Sympathy = {
         "Ctrl-J":'goto',
         "F9":"cycleTheme",
         "Ctrl-D": "duplicate",
-        "Ctrl-E":"newtab"
+        "Ctrl-E":"newtab",
+        "Ctrl-O":"open",
+        "Shift-Ctrl-O":"opennewtab"
       },
       autoClearEmptyLines: true,
       autofocus:true
@@ -124,7 +153,7 @@ var Sympathy = {
     var filename = Sympathy.filename;
     if(typeof filename == 'undefined'){
       //ask for the filename
-      var rootDir = (typeof this.dir !== 'undefined') ? "Relative to "+ Sympathy.dir : 'Type Absolute Path';
+      var rootDir = (typeof Sympathy !== 'undefined') ? "Relative to "+ Sympathy.dir : 'Type Absolute Path';
       var queryDialog =
     'Enter Filename: <input type="text" style="width: 10em"> <span style="color: #888">('+rootDir+')</span>';
       Sympathy.cm.openDialog(queryDialog, function(filename) {
