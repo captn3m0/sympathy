@@ -48,6 +48,7 @@ var Sympathy = {
   loadDir: function (dir) {
     this.dir = dir;
     //We load the directory here
+    console.log(dir);
     var fileList = this.fs.listFiles(dir);
     var html = '';
     for (i in fileList)
