@@ -21,3 +21,8 @@
   color: inherit;
   font-family: monospace;
 }
+
+.CodeMirror-dialog span.notify{
+  padding:.2em .5em;
+  color:#555;
+}

@@ -106,7 +106,7 @@ var Sympathy = {
       autoClearEmptyLines: true,
       autofocus:true
     });
-    this.changeTheme(this.currentTheme);
+    this.changeTheme(this.currentTheme,true);
     /**
      * Now we look for a hash in the url
      */
@@ -205,12 +205,14 @@ var Sympathy = {
     var path = filename.split(this.pathSeparator);
     return path.splice(0, path.length - 1).join(this.pathSeparator);
   },
-  changeTheme:function(theme){
+  changeTheme:function(theme,silent){
     //change the theme stylesheet
 	document.getElementById('theme-style').setAttribute('href',"cm/theme/"+theme+".css");
     this.cm.setOption("theme", theme);
     document.body.setAttribute('class','cm-s-'+theme);
     Sympathy.currentTheme = theme;
+    if(!silent)
+    	Sympathy.cm.notify("Theme changed : "+theme);
   },
   reload:function(cm){
     //wish there was a function to check last modified time in npapi

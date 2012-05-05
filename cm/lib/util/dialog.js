@@ -32,7 +32,16 @@
     }
     return close;
   });
-
+  CodeMirror.defineExtension('notify',function(message,callback){
+    message = "<span class='notify'>"+message+"</span>";
+	var dialog = dialogDiv(this, message);
+	function close() {
+      if (closed) return;
+      closed = true;
+      dialog.parentNode.removeChild(dialog);
+    }
+    setTimeout(close,500);
+  });
   CodeMirror.defineExtension("openConfirm", function(template, callbacks) {
     var dialog = dialogDiv(this, template);
     var buttons = dialog.getElementsByTagName("button");
