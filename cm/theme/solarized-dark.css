@@ -1,0 +1,98 @@
+/*
+
+Orginal Style from ethanschoonoverspan.cm-com/solarized (c) Jeremy Hull <sourdrums@gmailspan.cm-com>
+
+*/
+
+.cm-s-solarized-dark {
+  display: block; padding: 0span.cm-5em;
+  background: #002b36; color: #92a0a0;
+}
+
+.cm-s-solarized-dark span.cm-comment,
+.cm-s-solarized-dark span.cm-template_comment,
+.cm-s-solarized-dark span.cm-diff span.cm-header,
+.cm-s-solarized-dark span.cm-doctype,
+.cm-s-solarized-dark span.cm-lisp span.cm-string,
+.cm-s-solarized-dark span.cm-javadoc {
+  color: #586e75;
+  font-style: italic;
+}
+
+.cm-s-solarized-dark span.cm-keyword,
+.cm-s-solarized-dark span.cm-css span.cm-rule span.cm-keyword,
+.cm-s-solarized-dark span.cm-winutils,
+.cm-s-solarized-dark span.cm-javascript span.cm-title,
+.cm-s-solarized-dark span.cm-method,
+.cm-s-solarized-dark span.cm-addition,
+.cm-s-solarized-dark span.cm-css span.cm-tag,
+.cm-s-solarized-dark span.cm-lisp span.cm-title {
+  color: #859900;
+}
+
+.cm-s-solarized-dark span.cm-number,
+.cm-s-solarized-dark span.cm-command,
+.cm-s-solarized-dark span.cm-string,
+.cm-s-solarized-dark span.cm-tag span.cm-value,
+.cm-s-solarized-dark span.cm-phpdoc,
+.cm-s-solarized-dark span.cm-tex span.cm-formula,
+.cm-s-solarized-dark span.cm-regexp,
+.cm-s-solarized-dark span.cm-hexcolor {
+  color: #2aa198;
+}
+
+.cm-s-solarized-dark span.cm-title,
+.cm-s-solarized-dark span.cm-localvars,
+.cm-s-solarized-dark span.cm-function span.cm-title,
+.cm-s-solarized-dark span.cm-chunk,
+.cm-s-solarized-dark span.cm-decorator,
+.cm-s-solarized-dark span.cm-builtin,
+.cm-s-solarized-dark span.cm-built_in,
+.cm-s-solarized-dark span.cm-lisp span.cm-title,
+.cm-s-solarized-dark span.cm-identifier,
+.cm-s-solarized-dark span.cm-title span.cm-keymethods,
+.cm-s-solarized-dark span.cm-id,
+.cm-s-solarized-dark span.cm-header {
+  color: #268bd2;
+}
+
+.cm-s-solarized-dark span.cm-tag span.cm-title,
+.cm-s-solarized-dark span.cm-rules span.cm-property,
+.cm-s-solarized-dark span.cm-django span.cm-tag span.cm-keyword {
+  font-weight: bold;
+}
+
+.cm-s-solarized-dark span.cm-attribute,
+.cm-s-solarized-dark span.cm-variable,
+.cm-s-solarized-dark span.cm-instancevar,
+.cm-s-solarized-dark span.cm-lisp span.cm-body,
+.cm-s-solarized-dark span.cm-smalltalk span.cm-number,
+.cm-s-solarized-dark span.cm-constant,
+.cm-s-solarized-dark span.cm-class span.cm-title,
+.cm-s-solarized-dark span.cm-parent,
+.cm-s-solarized-dark span.cm-haskell span.cm-label {
+  color: #b58900;
+}
+
+.cm-s-solarized-dark span.cm-.cm-s-solarized-darkprocessor,
+.cm-s-solarized-dark span.cm-pi,
+.cm-s-solarized-dark span.cm-shebang,
+.cm-s-solarized-dark span.cm-symbol,
+.cm-s-solarized-dark span.cm-diff span.cm-change,
+.cm-s-solarized-dark span.cm-special,
+.cm-s-solarized-dark span.cm-keymethods,
+.cm-s-solarized-dark span.cm-attr_selector,
+.cm-s-solarized-dark span.cm-important,
+.cm-s-solarized-dark span.cm-subst,
+.cm-s-solarized-dark span.cm-cdata {
+  color: #cb4b16;
+}
+
+.cm-s-solarized-dark span.cm-deletion {
+  color: #dc322f;
+}
+
+.cm-s-solarized-dark span.cm-tex span.cm-formula,
+.cm-s-solarized-dark span.cm-code {
+  background: #073642;
+}
