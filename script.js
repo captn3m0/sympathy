@@ -23,14 +23,31 @@ var Sympathy = {
       autocomplete: function (cm) {
         CodeMirror.simpleHint(cm, CodeMirror.javascriptHint);
       },
-      cycleTheme:function(cm){
+      cycleTheme: function(cm){
         //look for the currentTheme
         var index = Sympathy.themes.indexOf(Sympathy.currentTheme);
-        console.log(index);
         var next = (index==Sympathy.themes.length-1) ? 0 : index+1;
-        console.log(next);
         var themeName = Sympathy.themes[next]
         Sympathy.changeTheme(themeName);
+      },
+      duplicate: function(cm){
+        if(cm.somethingSelected()){
+          var selectionEndCursor = cm.getCursor(false);
+          console.log(selectionEndCursor);
+          //if something is selected, replace it with twice its contents
+          //and highlight the second half
+          var selectedText = cm.getSelection();
+          cm.replaceSelection(selectedText+selectedText);
+          var finalSelectionEndCursor = cm.getCursor(false);
+          cm.setSelection(selectionEndCursor,finalSelectionEndCursor);
+        }
+        else{
+          var line = cm.getCursor().line
+          var lineContents = cm.getLine(line);
+		  console.log(lineContents);
+          lineContents+="\n"+lineContents;
+          cm.setLine(line,lineContents);
+        }
       }
     });
 
@@ -47,7 +64,8 @@ var Sympathy = {
         "Ctrl-L":'goto',
         "Ctrl-R":"reload",
         "Ctrl-J":'goto',
-        "F9":"cycleTheme"
+        "F9":"cycleTheme",
+        "Ctrl-D": "duplicate"
       },
       autoClearEmptyLines: true,
       autofocus:true
