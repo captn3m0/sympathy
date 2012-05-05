@@ -52,7 +52,7 @@ var Sympathy = {
     var fileList = this.fs.listFiles(dir);
     var html = '';
     for (i in fileList)
-    html += '<li class="' + fileList[i].type + '"><a target="_blank" href="#' + dir + "/" + fileList[i].name + '">' + fileList[i].name + '</a></li>';
+    html += '<li class="' + fileList[i].type + '"><span class="cm-property">' + fileList[i].name + '</span></li>';
     document.querySelector('#browser').innerHTML = html;
   },
   load: function (path) {
@@ -110,5 +110,16 @@ var Sympathy = {
   getContainingDirectory: function (filename) {
     var path = filename.split(this.pathSeparator);
     return path.splice(0, path.length - 1).join(this.pathSeparator);
-  }
+  },
+  changeTheme:function(theme){
+    //change the theme stylesheet
+	document.getElementById('theme-style').setAttribute('href',"cm/theme/"+theme+".css");
+    this.cm.setOption("theme", theme);
+    document.body.setAttribute('class','cm-s-'+theme);
+  },
+  /** List Of Themes **/
+  themes:[
+    "ambiance","blackboard","cobalt","eclipse","elegant","lesser-dark"
+    ,"monokai","neat","night","rubyblue","solarized-dark","xq-dark"
+  ]
 }

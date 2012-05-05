@@ -16,6 +16,13 @@ body{
   float:right;
 }
 
+
+/** Global Styles **/
+a:-webkit-any-link {
+	color: auto !important;
+	cursor: auto;
+}
+
 /** Highlighting **/
 span.CodeMirror-matchhighlight {
   background: #e9e9e9 
