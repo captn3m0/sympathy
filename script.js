@@ -16,6 +16,7 @@ var Sympathy = {
       save: function (cm) {
         Sympathy.save(cm.getValue());
       },
+      reload: Sympathy.reload,
       autocomplete: function (cm) {
         CodeMirror.simpleHint(cm, CodeMirror.javascriptHint);
       }
@@ -29,7 +30,8 @@ var Sympathy = {
       extraKeys: {
         "Ctrl-Space": "autocomplete",
         "Ctrl-H":"replace",
-        "Ctrl-L":'goto'
+        "Ctrl-L":'goto',
+        "Ctrl-R":"reload"
       },
       autoClearEmptyLines: true,
       autofocus:true
@@ -48,7 +50,6 @@ var Sympathy = {
   loadDir: function (dir) {
     this.dir = dir;
     //We load the directory here
-    console.log(dir);
     var fileList = this.fs.listFiles(dir);
     var html = '';
     for (i in fileList)
@@ -116,6 +117,14 @@ var Sympathy = {
 	document.getElementById('theme-style').setAttribute('href',"cm/theme/"+theme+".css");
     this.cm.setOption("theme", theme);
     document.body.setAttribute('class','cm-s-'+theme);
+  },
+  reload:function(cm){
+    //wish there was a function to check last modified time in npapi
+    //could have used it here to display a warning @todo
+    //get current cursor position
+    var cursor = cm.getCursor();
+    Sympathy.loadFile(Sympathy.filename);
+    cm.setCursor(cursor);
   },
   /** List Of Themes **/
   themes:[
