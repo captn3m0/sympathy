@@ -1,18 +1,30 @@
 var Sympathy = {
 	init:function(){
+		/** Initialize NPAPI Plugin */
 		this.fs = document.createElement("embed");
 		this.fs.style.position="absolute";
 		this.fs.style.left="-9999px";
 		this.fs.setAttribute("type", "application/x-npapi-file-io");
 		document.documentElement.appendChild(this.fs);
-		CodeMirror.modeURL = "cm/mode/%N/%N.js";
-		CodeMirror.commands.save = function(cm){
-			Sympathy.save(cm.getValue());
-			return false;
-		};
+		this.pathSeparator = this.fs.getPlatform() == 'windows' ? "\\" : '/';
+		
+      	/**  Code Mirror stuff */
+      	_.extend(CodeMirror,{modeURL: "cm/mode/%N/%N.js"});
+      	_.extend(CodeMirror.commands,{
+			save: function(cm){
+				Sympathy.save(cm.getValue());
+        	},
+          	autocomplete:function(cm){
+				CodeMirror.simpleHint(cm, CodeMirror.javascriptHint);
+			}
+        });
 		this.cm = CodeMirror(document.getElementById('editor'),{
 			lineNumbers: true,
 			theme:"eclipse",
+          	onCursorActivity: function(){
+          		Sympathy.cm.matchHighlight("CodeMirror-matchhighlight");
+          	},
+          	extraKeys: {"Ctrl-Space": "autocomplete"}
 		});
 		/**
 		 * Now we look for a hash in the url
@@ -29,8 +41,7 @@ var Sympathy = {
   	loadDir: function(dir){
       this.dir = dir;
       //We load the directory here
-      console.log(dir);
-      var fileList = (this.fs.listFiles(dir));
+      var fileList = this.fs.listFiles(dir);
       var html = '';
       for(i in fileList)
         html+='<li class="'+fileList[i].type+'"><a target="_blank" href="#'+dir+"/"+fileList[i].name+'">'+fileList[i].name+'</a></li>';
@@ -51,7 +62,7 @@ var Sympathy = {
 		CodeMirror.autoLoadMode(this.cm, mode);
       	
       	/** Set title of the page to filename */
-      	var pathComponents = path.split('/');
+      	var pathComponents = path.split(this.pathSeparator);
 		document.getElementsByTagName('title')[0].innerHTML = pathComponents[pathComponents.length-1];
       	
       	/** Load the current directory as well */
@@ -84,8 +95,7 @@ var Sympathy = {
         }[extension];
   	},
   	getContainingDirectory:function(filename){
-		var path = filename.split('/');
-      	console.log(path);
-      	return path.splice(0,path.length-1).join('/');
+		var path = filename.split(this.pathSeparator);
+      	return path.splice(0,path.length-1).join(this.pathSeparator);
   	}
 }

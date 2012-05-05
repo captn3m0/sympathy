@@ -2020,7 +2020,6 @@ var CodeMirror = (function() {
     },
     toggleOverwrite: function(cm) {cm.toggleOverwrite();}
   };
-
   var keyMap = CodeMirror.keyMap = {};
   keyMap.basic = {
     "Left": "goCharLeft", "Right": "goCharRight", "Up": "goLineUp", "Down": "goLineDown",
