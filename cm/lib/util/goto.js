@@ -9,17 +9,11 @@
     cm.focus()
   }
 
-  function dialog(cm, text, shortText, f) {
-    if (cm.openDialog) cm.openDialog(text, f);
-    else f(prompt(shortText, ""));
-  }
-
   var queryDialog =
     'Goto: <input type="text" style="width: 3em"> <span style="color: #888">(Enter Line #)</span>';
 
   CodeMirror.commands.goto = function(cm) {
-    dialog(cm, queryDialog, "Goto: ", function(query) {
-      console.log(query)
+    cm.openDialog(queryDialog, function(query) {
       goto(cm,query)
     });
   };

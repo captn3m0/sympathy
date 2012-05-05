@@ -16,14 +16,14 @@ var Sympathy = {
     });
     /** Additional Commands **/
     _.extend(CodeMirror.commands, {
-      save: function (cm) {
-        Sympathy.save(cm.getValue());
+      save: function () {
+        Sympathy.save(Sympathy.cm.getValue());
       },
       reload: Sympathy.reload,
       autocomplete: function (cm) {
         CodeMirror.simpleHint(cm, CodeMirror.javascriptHint);
       },
-      cycleTheme: function(cm){
+      cycleTheme: function(){
         //look for the currentTheme
         var index = Sympathy.themes.indexOf(Sympathy.currentTheme);
         var next = (index==Sympathy.themes.length-1) ? 0 : index+1;
@@ -48,6 +48,12 @@ var Sympathy = {
           lineContents+="\n"+lineContents;
           cm.setLine(line,lineContents);
         }
+      },
+      newtab: function(){
+        //create a new tab with the current folder browse mode
+        var link = location.origin+location.pathname+'#'+Sympathy.dir;
+        window.open(link);
+		return false;
       }
     });
 
@@ -65,7 +71,8 @@ var Sympathy = {
         "Ctrl-R":"reload",
         "Ctrl-J":'goto',
         "F9":"cycleTheme",
-        "Ctrl-D": "duplicate"
+        "Ctrl-D": "duplicate",
+        "Ctrl-E":"newtab"
       },
       autoClearEmptyLines: true,
       autofocus:true
@@ -109,15 +116,37 @@ var Sympathy = {
 
     /** Load the current directory as well */
     this.loadDir(this.getContainingDirectory(path));
+
+    /** Set the location hash to the file as well, so it can be bookmarked **/
+    document.location.hash = this.filename;
   },
-  save: function (v) {
-    var filename = this.filename;
-    this.fs.removeFile(filename);
-    this.fs.saveTextFile(filename, v);
+  save: function (content) {
+    var filename = Sympathy.filename;
+    if(typeof filename == 'undefined'){
+      //ask for the filename
+      var rootDir = (typeof this.dir !== 'undefined') ? "Relative to "+ Sympathy.dir : 'Type Absolute Path';
+      var queryDialog =
+    'Enter Filename: <input type="text" style="width: 10em"> <span style="color: #888">('+rootDir+')</span>';
+      Sympathy.cm.openDialog(queryDialog, function(filename) {
+        if(filename.length > 0){
+          if(Sympathy.dir)
+            Sympathy.filename = Sympathy.dir+Sympathy.pathSeparator+filename;
+          //now we call save function again
+          Sympathy.save(content)
+          Sympathy.loadFile(Sympathy.filename);
+        }
+      });
+    }
+    else{
+      	if(this.fs.fileExists(filename))
+    		this.fs.removeFile(filename);
+    	this.fs.saveTextFile(filename, content);
+    }
     return false;
   },
   filenameToMode: function (filename) {
     var path = filename.split('.');
+    if( path.length == 1) return 'markdown';
     var extension = path[path.length - 1];
     return {
       "js": 'javascript',
