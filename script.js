@@ -28,7 +28,8 @@ var Sympathy = {
       },
       extraKeys: {
         "Ctrl-Space": "autocomplete",
-        "Ctrl-H":"replace"
+        "Ctrl-H":"replace",
+        "Ctrl-L":'goto'
       },
       autoClearEmptyLines: true,
       autofocus:true
