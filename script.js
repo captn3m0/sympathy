@@ -44,7 +44,6 @@ var Sympathy = {
       duplicate: function(cm){
         if(cm.somethingSelected()){
           var selectionEndCursor = cm.getCursor(false);
-          console.log(selectionEndCursor);
           //if something is selected, replace it with twice its contents
           //and highlight the second half
           var selectedText = cm.getSelection();
@@ -55,7 +54,6 @@ var Sympathy = {
         else{
           var line = cm.getCursor().line
           var lineContents = cm.getLine(line);
-		  console.log(lineContents);
           lineContents+="\n"+lineContents;
           cm.setLine(line,lineContents);
         }
@@ -70,7 +68,6 @@ var Sympathy = {
 		return false;
       },
       opennewtab: function(cm){
-        console.log('nto');
 		//ask for file name
 		var rootDir = (typeof Sympathy.dir !== 'undefined') ? "Relative to "+ Sympathy.dir : 'Type Absolute Path';
 		var queryDialog =
@@ -125,8 +122,9 @@ var Sympathy = {
       var fileList = this.fs.listFiles(dir);
     }
     catch(error){
+      console.log(error);
       this.cm.notify("There was an error in loading the file list.");
-      return;
+      return true;
     }
     var html = '';
     for (i in fileList)
@@ -147,11 +145,11 @@ var Sympathy = {
 
     /** Set title of the page to filename */
     var pathComponents = path.split(this.pathSeparator);
-    var dir = this.getContainingDirectory(path);
+    this.dir = this.getContainingDirectory(path);
     document.getElementsByTagName('title')[0].innerHTML = pathComponents[pathComponents.length - 1];
 
     /** Load the current directory as well */
-    this.loadDir(dir);
+    this.loadDir(this.dir);
 
     /** Set the location hash to the file as well, so it can be bookmarked **/
     document.location.hash = this.filename;
@@ -189,6 +187,9 @@ var Sympathy = {
       'html': 'htmlmixed',
       'css': 'css',
       'c': 'clike',
+      'java':'clike',
+      'cs':'clike',
+      'h':'clike',
       'cpp': 'clike',
       'mkd': 'markdown',
       'md': 'markdown',
