@@ -1,7 +1,7 @@
 {
 	"name": "Sympathy Editor",
-	"version": "0.0.1",
-	"description": "Does something",
+	"version": "0.0.2",
+	"description": "The easiest way to edit local files inside Chrome. Works completely offline, and has syntax highlighting, file-browsing, quick shortcuts and more.",
 	"icons":{
 		"128":"icon.png",
 		"16":"icon_16.png"

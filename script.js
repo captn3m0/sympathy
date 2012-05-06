@@ -121,10 +121,16 @@ var Sympathy = {
   loadDir: function (dir) {
     this.dir = dir;
     //We load the directory here
-    var fileList = this.fs.listFiles(dir);
+    try{
+      var fileList = this.fs.listFiles(dir);
+    }
+    catch(error){
+      this.cm.notify("There was an error in loading the file list.");
+      return;
+    }
     var html = '';
     for (i in fileList)
-    html += '<li class="' + fileList[i].type + '"><span class="cm-property">' + fileList[i].name + '</span></li>';
+      html += '<li class="' + fileList[i].type + '"><span class="cm-property">' + fileList[i].name + '</span></li>';
     document.querySelector('#browser').innerHTML = html;
   },
   load: function (path) {
@@ -141,10 +147,11 @@ var Sympathy = {
 
     /** Set title of the page to filename */
     var pathComponents = path.split(this.pathSeparator);
+    var dir = this.getContainingDirectory(path);
     document.getElementsByTagName('title')[0].innerHTML = pathComponents[pathComponents.length - 1];
 
     /** Load the current directory as well */
-    this.loadDir(this.getContainingDirectory(path));
+    this.loadDir(dir);
 
     /** Set the location hash to the file as well, so it can be bookmarked **/
     document.location.hash = this.filename;
@@ -189,6 +196,7 @@ var Sympathy = {
       'py': 'python',
       'rb': 'ruby',
       'sh': 'shell',
+      'bashrc':'shell',
       'xml': 'xml',
       'less': 'less',
       'sql': 'mysql',
