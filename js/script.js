@@ -14,7 +14,7 @@ var Sympathy = {
 
     /**Code Mirror stuff */
     _.extend(CodeMirror, {
-      modeURL: "cm/mode/%N/%N.js"
+      modeURL: "../cm/mode/%N/%N.js"
     });
     /** Additional Commands **/
     _.extend(CodeMirror.commands, {
@@ -230,7 +230,8 @@ var Sympathy = {
         json:true
       },
       yaml: 'yaml',
-      r: 'r'
+      r: 'r',
+      coffee:'coffeescript'
     }[extension];
 
   },
@@ -240,7 +241,7 @@ var Sympathy = {
   },
   changeTheme:function(theme,silent){
     //change the theme stylesheet
-	document.getElementById('theme-style').setAttribute('href',"cm/theme/"+theme+".css");
+	document.getElementById('theme-style').setAttribute('href',"../cm/theme/"+theme+".css");
     this.cm.setOption("theme", theme);
     document.body.setAttribute('class','cm-s-'+theme);
     Sympathy.currentTheme = theme;
