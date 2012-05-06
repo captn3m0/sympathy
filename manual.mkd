@@ -17,6 +17,7 @@ As such, it tries to rely on keyboard shortcuts instead of cluttering the interf
 menus, tabs, preferences etc.
 
 - F9         	Cycle through themes
+- F1			This Manual
 - Ctrl-F     	Search
 - Ctrl-Z     	Undo
 - Ctrl-E     	Open new editor tab

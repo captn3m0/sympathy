@@ -1,7 +1,9 @@
 var Sympathy = {
   currentTheme:"neat",
   init: function () {
-
+	$.ajaxSetup({
+      context: Sympathy
+    });
     /** Initialize NPAPI Plugin */
     this.fs = document.createElement("embed");
     this.fs.style.position = "absolute";
@@ -78,6 +80,17 @@ var Sympathy = {
           CodeMirror.commands.newtab(cm,filename)
         });
         return false;
+      },
+      openmanual: function(cm){
+        var editor=cm;
+        $.get('manual.mkd',function(text,a,b,c){
+          this.cm.setValue(text);
+          this.cm.setOption("mode", "markdown");
+          CodeMirror.autoLoadMode(this.cm, "markdown");
+          this.cm.notify("Try pressing Ctrl-S");
+        });
+        this.filename=this.dir=false;
+        return false;
       }
     });
 
@@ -98,7 +111,8 @@ var Sympathy = {
         "Ctrl-D": "duplicate",
         "Ctrl-E":"newtab",
         "Ctrl-O":"open",
-        "Shift-Ctrl-O":"opennewtab"
+        "Shift-Ctrl-O":"opennewtab",
+        "F1":"openmanual"
       },
       autoClearEmptyLines: true,
       autofocus:true
@@ -109,7 +123,14 @@ var Sympathy = {
      */
     var locationInHash = location.hash.substr(1);
     if (locationInHash.length > 1) {
-      this.load(location.hash.substr(1));
+      switch(locationInHash){
+        case 'manual':
+          //Load the user manual
+          CodeMirror.commands.openmanual();
+          break;
+        default:
+      	  this.load(locationInHash);
+      }
     } else {
       var path = prompt("Enter a file/directory path");
       this.load(path);
@@ -183,30 +204,33 @@ var Sympathy = {
     if( path.length == 1) return 'markdown';
     var extension = path[path.length - 1];
     return {
-      "js": 'javascript',
-      'html': 'htmlmixed',
-      'css': 'css',
-      'c': 'clike',
-      'java':'clike',
-      'cs':'clike',
-      'h':'clike',
-      'cpp': 'clike',
-      'mkd': 'markdown',
-      'md': 'markdown',
-      'php': 'php',
-      'py': 'python',
-      'rb': 'ruby',
-      'sh': 'shell',
-      'bashrc':'shell',
-      'xml': 'xml',
-      'less': 'less',
-      'sql': 'mysql',
-      'json': {
-        "name":'javascript',
-        "json":true
+      js: 'javascript',
+      html: 'htmlmixed',
+      css: 'css',
+      c: 'clike',
+      java:'clike',
+      cs:'clike',
+      h:'clike',
+      cpp: {
+        name:'clike',
+        useCPP:true
       },
-      'yaml': 'yaml',
-      'r': 'r'
+      mkd: 'markdown',
+      md: 'markdown',
+      php: 'php',
+      py: 'python',
+      rb: 'ruby',
+      sh: 'shell',
+      bashrc:'shell',
+      xml: 'xml',
+      less: 'less',
+      sql: 'mysql',
+      json: {
+        name:'javascript',
+        json:true
+      },
+      yaml: 'yaml',
+      r: 'r'
     }[extension];
 
   },
