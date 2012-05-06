@@ -1,0 +1,57 @@
+#Sympathy User Manual
+
+[Sympathy](http://captnemo.in/projects/sympathy) is a _local file editor_ for Chrome.
+The following features are available in Sympathy:
+
+1. Syntax Highlighting (all major languages using CodeMirror)
+2. In browser editing of all files (no need to sync with dropbox)
+3. All normal fancy features for a text editor are present
+
+Sympathy is self-coded, meaning it was completely written in itself, validating itself
+as a viable code editor.
+
+#Keyboard Shortcuts
+
+Sympathy is primarily a Code Editor, which can also function as a text editor in some cases. 
+As such, it tries to rely on keyboard shortcuts instead of cluttering the interface with
+menus, tabs, preferences etc.
+
+- F9         	Cycle through themes
+- Ctrl-F     	Search
+- Ctrl-Z     	Undo
+- Ctrl-E     	Open new editor tab
+- Ctrl-S     	Save the file
+- Ctrl-Space 	Autocomplete (only javascript)
+- Ctrl-H	 	Find and Replace
+- Ctrl-O	 	Open a file
+- Ctrl-Shift-O	Open a file in new tab
+- Ctrl-D		Duplicate a line/selection
+- Ctrl-J/L		Go to line number
+- Ctrl-R		Reload the current file
+- Ctrl-G		Find next
+- Ctrl-Shift-G	Find previous
+- Ctrl-Shift-F	Replace
+- Ctrl-F     	Search
+- Shift-Ctrl-R  Replace all
+
+
+##Pre-release
+As of now, Sympathy is still under heavy development, and this is a pre-alpha release. Please 
+report any bugs/features to [me](nemo@sdslabs.co.in). All official announcements will be 
+made on the [Sympathy homepage](http://captnemo.in/projects/sympathy)
+
+##Licence
+I have not yet decided on the licence, but it will probably be MIT/GPLv3.
+
+##Known Issues
+- Plugin crashes on trying to load a directory which contains symlinks.
+- Date Modified Information may be lost as sympathy deletes and rewrites the file from scratch.
+- Does not work on Mac (npapi-file-io does not have mac bindings)
+
+##Contribute
+- Feel free to add fork and add patches via github for new features. Please open an issue first
+to make sure that I'm not already working on it.
+- If you are good in C++, contribute to the npapi-file-io plugin. It could really help us out.
+
+##Planned Features
+Please see [github issues](https://github.com/captn3m0/sympathy/issues) for planned features. 
