@@ -7,22 +7,32 @@ only a proof of concept editor, and is not completely functional.
 
 #Why?
 Because the future is the browser? And more so because I wanted a local editor in my browser to complement
-a terminal. Other than these three things, what more would you need? You can read the [related blog post at my blog](https://github.com/captn3m0/captn3m0.github.com/blob/master/_drafts/Sympathy-Editor.mkd)
+a terminal. Other than these three things, what more would you need? You can read the 
+[related blog post at my blog](https://github.com/captn3m0/captn3m0.github.com/blob/master/_drafts/Sympathy-Editor.mkd)
 which gave birth to this editor. I was initially hoping for a chromium fork as I could not think of a way to 
 get (good) local file access in chromium, but I recently heard about NPAPI plugins having full access to local
 filesystem (and consequentially npapi-file-io).
 
 #How?
-Sympathy does not use the HTML5 filesystem API. It instead relies on a NPAPI plugin called [npapi-file-io](npapi-file-io.googlecode.com). 
-The plugin acts as a relay between the frontend and the filesystem, allowing you to save and read files, directories.
+Sympathy does not use the HTML5 filesystem API. It instead relies on a NPAPI plugin called 
+[npapi-file-io](npapi-file-io.googlecode.com). The plugin acts as a relay between the frontend 
+and the filesystem, allowing you to save and read files, directories.
 
 #What's Next?
-I'm gonna try to fork [sourcekit](https://github.com/kenotron/sourcekit/) to use this instead, but I feel that it would
-restrict the power of multiple tabs that the current format allows (1 file = 1 tab). So editor tabs are not virtual
-tabs but at par with a normal browser tab
+I'm gonna try to fork [sourcekit](https://github.com/kenotron/sourcekit/) to use this instead, 
+but I feel that it would restrict the power of multiple tabs that the current format allows (1 file = 1 tab). 
+So editor tabs are not virtual tabs but at par with a normal browser tab
 
 #Compatability
-It only works with Linux as of now. Windows support should be coming soon, but due to lac of npapi-file-io bindings
-for mac, it won't work there.
+It only works with Linux as of now. Windows support should be coming soon, but due to lac of 
+npapi-file-io bindings for mac, it won't work there.
+
+##Licence
+I have not yet decided on the licence, but it will probably be MIT/GPLv3.
+
+##Contribute
+- Feel free to add fork and add patches via github for new features. Please open an issue first
+to make sure that I'm not already working on it.
+- If you are good in C++, contribute to the npapi-file-io plugin. It could really help us out.
 
 Editor Icon by [Asher](http://kyo-tux.deviantart.com/) used under [CC BY-NC-SA 3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/)

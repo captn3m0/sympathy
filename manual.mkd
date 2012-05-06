@@ -41,18 +41,10 @@ As of now, Sympathy is still under heavy development, and this is a pre-alpha re
 report any bugs/features to [me](nemo@sdslabs.co.in). All official announcements will be 
 made on the [Sympathy homepage](http://captnemo.in/projects/sympathy)
 
-##Licence
-I have not yet decided on the licence, but it will probably be MIT/GPLv3.
-
 ##Known Issues
 - Plugin crashes on trying to load a directory which contains symlinks.
 - Date Modified Information may be lost as sympathy deletes and rewrites the file from scratch.
 - Does not work on Mac (npapi-file-io does not have mac bindings)
-
-##Contribute
-- Feel free to add fork and add patches via github for new features. Please open an issue first
-to make sure that I'm not already working on it.
-- If you are good in C++, contribute to the npapi-file-io plugin. It could really help us out.
 
 ##Planned Features
 Please see [github issues](https://github.com/captn3m0/sympathy/issues) for planned features. 
