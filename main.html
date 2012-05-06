@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Sympathy Editor</title>
+		<link rel="stylesheet" href="/css/codemirror.css">
+        <script src="/app/libs/codemirror/codemirror.js"></script>
+      	<!-- CodeMirror Plugins -->
+        <script src="/app/libs/codemirror/loadmode.js"></script>
+      	<script src="/app/libs/codemirror/dialog.js"></script>
+      	<script src="/app/libs/codemirror/searchcursor.js"></script>
+      	<script src="/app/libs/codemirror/match-highlighter.js"></script>
+      	<script src="/app/libs/codemirror/search.js"></script>
+        <script src="/app/libs/codemirror/simple-hint.js"></script>
+    	<script src="/app/libs/codemirror/javascript-hint.js"></script>
+		<script src="/app/libs/codemirror/goto.js"></script>
+      	<!-- Styles -->
+        <link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/simple-hint.css">
+      	<link id="theme-style" rel="stylesheet" href="">
+      	<link rel="stylesheet" href="/css/dialog.css">
+
+      <!-- Application JS -->
+      <script src="/app/libs/underscore/underscore-min.js"></script>
+      <script src="/app/libs/jquery/jquery-min.js"></script>
+      <script src="/app/script.js"></script>
+    </head>
+    <body>
+		<div id='editor'></div>
+      	<ul id="browser">
+      	</ul>
+		<script>
+			Sympathy.init();
+		</script>
+    </body>
+</html>
