@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Sympathy by captn3m0</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Sympathy</h1>
+        <p>Local File Editor for Chrome using NPAPI</p>
+        <p class="view"><a href="https://github.com/captn3m0/sympathy">View the Project on GitHub <small>captn3m0/sympathy</small></a></p>
+        <ul>
+          <li><a href="https://github.com/captn3m0/sympathy/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/captn3m0/sympathy/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/captn3m0/sympathy">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>SYMPATHY EDITOR</h1>
+
+<p>Sympathy is an in-browser text editor for Chrome, which allows you to edit <em>local files</em>. This means you
+can browse to <code>file:///path/to/file.js</code> and it will open in Sympathy itself and you can save/edit it 
+within Chrome itself. </p>
+
+<p>Sympathy does not hit the web for any sort of sync ever. It is an alternative to simple text editors such as
+geany/notepad++, but it works within your browser.</p>
+
+<h1><a href="https://github.com/downloads/captn3m0/sympathy/sympathy-editor-0.0.4.crx">Install</a></h1>
+
+<p><img src="http://db.tt/D4UdTZ5e" alt="Screenshot of manual page"></p>
+
+<p><img src="http://dl.dropbox.com/u/1766113/screenshot/Index%20of%20-home-nemo-projects-captnemo.in-about-%20-%20Chromium.png" alt="file:// browsing"></p>
+
+<p><img src="http://db.tt/jtDy2bun" alt="bookmark support"></p>
+
+<p><img src="http://db.tt/hpxJG4lt" alt="new tab"></p>
+
+<h1>Why?</h1>
+
+<p>Because the future is the browser? And more so because I wanted a local editor in my browser to complement
+a terminal. Other than these three things, what more would you need? You can read the 
+<a href="https://github.com/captn3m0/captn3m0.github.com/blob/master/_drafts/Sympathy-Editor.mkd">related blog post at my blog</a>
+which gave birth to this editor. I was initially hoping for a chromium fork as I could not think of a way to 
+get (good) local file access in chromium, but I recently heard about NPAPI plugins having full access to local
+filesystem (and consequentially npapi-file-io).</p>
+
+<h1>How?</h1>
+
+<p>Sympathy does not use the HTML5 filesystem API. It instead relies on a NPAPI plugin called 
+<a href="npapi-file-io.googlecode.com">npapi-file-io</a>. The plugin acts as a relay between the frontend 
+and the filesystem, allowing you to save and read files, directories.</p>
+
+<h1>What's Next?</h1>
+
+<p>A move to use backbone.js is in progress (see the backbone branch). Lots of exciting features are planned as well.</p>
+
+<h1>Compatability</h1>
+
+<p>It only works with Linux/Windows as of now. But due to lac of npapi-file-io bindings for mac, it won't work there.</p>
+
+<h2>Licence</h2>
+
+<p>I have not yet decided on the licence, but it will probably be MIT/GPLv3.</p>
+
+<h2>Contribute</h2>
+
+<ul>
+<li>Feel free to add fork and add patches via github for new features. Please open an issue first
+to make sure that I'm not already working on it.</li>
+<li>If you are good in C++, contribute to the npapi-file-io plugin. It could really help us out.</li>
+</ul><p>Editor Icon by <a href="http://kyo-tux.deviantart.com/">Asher</a> used under <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/captn3m0">captn3m0</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-5922129-9");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
