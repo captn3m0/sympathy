@@ -1,7 +1,13 @@
 #SYMPATHY EDITOR
 
-Sympathy is an in-browser text editor for Chrome, which allows you to edit _local files_. This is as of now, 
-only a proof of concept editor, and is not completely functional.
+Sympathy is an in-browser text editor for Chrome, which allows you to edit _local files_. This means you
+can browse to `file:///path/to/file.js` and it will open in Sympathy itself and you can save/edit it 
+within Chrome itself. 
+
+Sympathy does not hit the web for any sort of sync ever. It is an alternative to simple text editors such as
+geany/notepad++, but it works within your browser.
+
+[Install](https://github.com/downloads/captn3m0/sympathy/sympathy-editor-0.0.4.crx)
 
 ![Screenshot of this file](http://dl.dropbox.com/u/1766113/screenshot/README.mkd%20-%20Chromium.png)
 
@@ -19,13 +25,10 @@ Sympathy does not use the HTML5 filesystem API. It instead relies on a NPAPI plu
 and the filesystem, allowing you to save and read files, directories.
 
 #What's Next?
-I'm gonna try to fork [sourcekit](https://github.com/kenotron/sourcekit/) to use this instead, 
-but I feel that it would restrict the power of multiple tabs that the current format allows (1 file = 1 tab). 
-So editor tabs are not virtual tabs but at par with a normal browser tab
+A move to use backbone.js is in progress (see the backbone branch). Lots of exciting features are planned as well.
 
 #Compatability
-It only works with Linux as of now. Windows support should be coming soon, but due to lac of 
-npapi-file-io bindings for mac, it won't work there.
+It only works with Linux/Windows as of now. But due to lac of npapi-file-io bindings for mac, it won't work there.
 
 ##Licence
 I have not yet decided on the licence, but it will probably be MIT/GPLv3.
