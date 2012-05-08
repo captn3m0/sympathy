@@ -7,9 +7,17 @@ within Chrome itself.
 Sympathy does not hit the web for any sort of sync ever. It is an alternative to simple text editors such as
 geany/notepad++, but it works within your browser.
 
-[Install](https://github.com/downloads/captn3m0/sympathy/sympathy-editor-0.0.4.crx)
+#[Install](https://github.com/downloads/captn3m0/sympathy/sympathy-editor-0.0.4.crx)
 
-![Screenshot of this file](http://dl.dropbox.com/u/1766113/screenshot/README.mkd%20-%20Chromium.png)
+![Screenshot of manual page](http://db.tt/D4UdTZ5e)
+
+![file:// browsing](http://dl.dropbox.com/u/1766113/screenshot/Index%20of%20-home-nemo-projects-captnemo.in-about-%20-%20Chromium.png)
+
+![bookmark support](http://dl.dropbox.com/u/1766113/screenshot/Index%20of%20-home-nemo-projects-captnemo.in-about-%20-%20Chromium.png)
+
+![new tab](http://dl.dropbox.com/u/1766113/screenshot/Index%20of%20-home-nemo-projects-captnemo.in-about-%20-%20Chromium.png)
+
+
 
 #Why?
 Because the future is the browser? And more so because I wanted a local editor in my browser to complement
