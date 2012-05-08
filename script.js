@@ -138,19 +138,11 @@ var Sympathy = {
   },
   loadDir: function (dir) {
     this.dir = dir;
-    //We load the directory here
-    try{
-      var fileList = this.fs.listFiles(dir);
-    }
-    catch(error){
-      console.log(error);
-      this.cm.notify("There was an error in loading the file list.");
-      return true;
-    }
-    var html = '';
-    for (i in fileList)
-      html += '<li class="' + fileList[i].type + '"><span class="cm-property">' + fileList[i].name + '</span></li>';
-    document.querySelector('#browser').innerHTML = html;
+    $('#browser').html('<a target="_blank" href="file://'+dir+'">'+dir+'</a><br>(Right Click and open in new tab)');
+    $('#browser a').click(function(e){
+      window.open($(e.target).attr('href'));
+      return false;
+    })
   },
   load: function (path) {
     if (this.fs.isDirectory(path)) this.loadDir(path);
