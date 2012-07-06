@@ -1,6 +1,5 @@
 extensions={
   js: 'javascript',
-  html: 'htmlmixed',
   css: 'css',
   c: 'clike',
   java:'clike',
@@ -30,7 +29,9 @@ extensions={
 };
 var path =  document.location.pathname.split('/')
 var lastBit = path[path.length-1]
-if(lastBit!='' && lastBit !='index.html'){
+var pieces = lastBit.split(".");
+var extension = pieces[pieces.length-1];
+if(extensions.hasOwnProperty(extension)){
   var file = lastBit.split('.');
   document.location.href = chrome.extension.getURL('main.html'+'#'+location.pathname);
 }
