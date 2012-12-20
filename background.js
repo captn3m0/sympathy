@@ -1,4 +1,3 @@
-<script>
 chrome.contextMenus.create({
   title:"Edit using sympathy",
   contexts:["link"],
@@ -10,4 +9,3 @@ chrome.contextMenus.create({
     window.open(chrome.extension.getURL("main.html")+'#'+filename);
   }
 })
-</script>

@@ -1,12 +1,14 @@
 {
 	"name": "Sympathy Editor",
-	"version": "0.0.4",
+	"version": "0.0.5",
     "content_scripts":[{
         "js":["content.js"],
         "matches":[ "file://*/*" ],
         "run_at":"document_end"
     }],
-	"background_page" : "background.html",
+  	"background" : {
+      "scripts":["background.js"]
+  	},
 	"description": "The easiest way to edit local files inside Chrome. Works completely offline, and has syntax highlighting, file-browsing, quick shortcuts and more.",
 	"icons":{
 		"128":"icon.png",
@@ -19,5 +21,6 @@
     }
   },
   "plugins": [{"path": "npapi-file-io-32.dll"},{"path": "npapi-file-io-32.so"},{"path": "npapi-file-io-64.so"}],
-  "permissions":["contextMenus"]
+  "permissions":["contextMenus"],
+  "manifest_version":2
 }
