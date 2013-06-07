@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>SourceKit</title>
+        <link rel="stylesheet" href="css/themes/claro/claro.css" />
+        <link rel="stylesheet" href="css/application.css" />
+        <script src="../src/dojo/dojo.js.uncompressed.js" djConfig="parseOnLoad:true"></script>
+        <script type="text/javascript" src="../src/dojo/dojoboot.js"></script>
+    </head>
+    <body class="claro">
+		<div dojoType="dijit.Dialog" id="optionsDialog" title="Options">
+			<table>
+				<tr>
+					<td><label for="optionsTheme">Theme:</label></td>
+					<td id="optionsTheme"></td>					
+				</tr>
+				<tr>
+					<td><label for="optionsWordwrap">WordWrap:</label></td>
+					<td id="optionsWordwrap"></td>					
+				</tr>
+				<tr>
+					<td><label for="optionsLineNumbers">Line Numbers:</label></td>
+					<td id="optionsLineNumbers"></td>				
+				</tr>
+				<tr>
+					<td><label for="optionsPrintMargin">Print Margin:</label></td>
+					<td id="optionsPrintMargin"></td>				
+				</tr>
+			</table>
+		</div>
+        <div id="borderContainer" dojoType="dijit.layout.BorderContainer" gutters="false" liveSplitters="true">
+            <div id="borderLeft" dojoType="dijit.layout.ContentPane" region="left" splitter="true">
+                <div id="fileListTree"></div>
+            </div>
+            <div id="borderCenter" dojoType="dijit.layout.ContentPane" region="center">
+                <div id="introContainer">
+                    <h1>SourceKit</h1>
+                </div>
+            </div>
+        </div>
+        <div id="editorContainer"></div>
+        <script src="../src/require.js"></script>
+        <script src="../src/boot.js"></script>
+    </body>
+</html>

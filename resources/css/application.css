@@ -1,0 +1,46 @@
+html * {
+  outline: none;
+  outline-style: none;
+  -moz-outline-style: none;
+}
+
+body, html { width:100%; height:100%; margin:0; padding:0; overflow: hidden; }
+
+#borderContainer { width:100%; height:100% }
+
+#borderLeft {
+    width: 200px; 
+    margin: 5px 0 5px 5px;
+    padding: 0;
+    border: #B5BCC7 solid 1px;
+}
+
+#borderCenter {
+    padding: 0 5px 5px 0;
+    
+}
+
+#introContainer {
+  background: #ddd;
+  height: 100%;
+  width: 100%;
+}
+
+#introContainer h1 {
+	font-size: 50px;
+	font-family: helvetica;
+	font-weight: bold;
+	color: #999;
+	margin: 0 auto 0 auto;
+	padding: 50px 0 0 0;
+	text-shadow: 1px 1px 1px white;
+	text-align: center;
+}
+
+#editorContainer {
+    display: none;
+}
+
+.dijitTabContainerTop-container .dijitContentPane {
+    padding: 0;
+}
